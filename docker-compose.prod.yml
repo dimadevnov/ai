@@ -36,8 +36,7 @@ services:
     environment:
       - DOMAIN=${DOMAIN}
     command: >
-      sh -c "envsubst '${DOMAIN}' < /etc/nginx/templates/domain.conf.template > /etc/nginx/conf.d/default.conf
-               && nginx -g 'daemon off;'"
+      sh -c "envsubst '$$DOMAIN' < /etc/nginx/templates/domain.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
       - client
       - server
